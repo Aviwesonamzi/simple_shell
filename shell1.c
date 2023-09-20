@@ -10,8 +10,8 @@ int _myexit(info_t *info)
 
 	if (info->argv[1]) /* If there is an exit arguement */
 	{
-		extchck = _erratoi(info->argv[1]);
-		if (extchck == -1)
+		extchk = _erratoi(info->argv[1]);
+		if (extchk == -1)
 		{
 			info->status = 2;
 			print_error(info, "Illegal number: ");
@@ -58,7 +58,7 @@ int _mycd(info_t *info)
 		}
 		_puts(_getenv(info, "OLDPWD=")), _putchar('\n');
 		chdir_ret =
-			chdir((dir = _getenv(info, "OLDPWD=")) ? ptr : "/");
+			chdir((ptr = _getenv(info, "OLDPWD=")) ? ptr : "/");
 	}
 	else
 		chdir_ret = chdir(info->argv[1]);
