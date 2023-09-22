@@ -82,11 +82,9 @@ ssize_t get_input(info_t *info)
 		*buf_p = p;
 		return (_strlen(p));
 	}
-
-	*buf_p = ptr; 
+	*buf_p = ptr;
 	return (r);
 }
-
 /**
  * read_buf - reads a buffer
  * @info: parameter struct

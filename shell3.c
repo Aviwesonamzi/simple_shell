@@ -31,11 +31,6 @@ char *_getenv(info_t *info, const char *name)
 	return (NULL);
 }
 
-/**
- * _mysetenv - Initialize a new environment variable
- * @info: Structure containing potential arguments	
- * Return: 0
- */
 int _mysetenv(info_t *info)
 {
 	if (info->argc != 3)
