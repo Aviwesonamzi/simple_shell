@@ -6,13 +6,13 @@
  */
 char **get_environ(info_t *info)
 {
-	if (!info->environ || info->env_changed)
+	if (!info->envi || info->env_changed)
 	{
-		info->environ = list_to_strings(info->env);
+		info->envi = list_to_strings(info->env);
 		info->env_changed = 0;
 	}
 
-	return (info->environ);
+	return (info->envi);
 }
 
 /**
@@ -32,7 +32,7 @@ int _unsetenv(info_t *info, char *var)
 
 	while (node)
 	{
-		p = starts_with(node->str, var);
+		p = starts_with(node->ptr, var);
 		if (p && *p == '=')
 		{
 			info->env_changed = delete_node_at_index(&(info->env), a);
@@ -64,11 +64,11 @@ int _setenv(info_t *info, char *var, char *value)
 	node = info->env;
 	while (node)
 	{
-		p = starts_with(node->str, var);
+		p = starts_with(node->ptr, var);
 		if (p && *p == '=')
 		{
-			free(node->str);
-			node->str = ptr;
+			free(node->ptr);
+			node->ptr = ptr;
 			info->env_changed = 1;
 			return (0);
 		}

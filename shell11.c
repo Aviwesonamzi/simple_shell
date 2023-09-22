@@ -19,8 +19,8 @@ list_t *add_node(list_t **head, const char *str, int num)
 	new_head->num = num;
 	if (str)
 	{
-		new_head->str = _strdup(str);
-		if (!new_head->str)
+		new_head->ptr = _strdup(str);
+		if (!new_head->ptr)
 		{
 			free(new_head);
 			return (NULL);
@@ -53,8 +53,8 @@ list_t *add_node_end(list_t **head, const char *str, int num)
 	new_node->num = num;
 	if (str)
 	{
-		new_node->str = _strdup(str);
-		if (!new_node->str)
+		new_node->ptr = _strdup(str);
+		if (!new_node->ptr)
 		{
 			free(new_node);
 			return (NULL);
@@ -82,7 +82,7 @@ size_t print_list_str(const list_t *h)
 
 	while (h)
 	{
-		_puts(h->str ? h->str : "(nil)");
+		_puts(h->ptr ? h->ptr : "(nil)");
 		_puts("\n");
 		h = h->next;
 		a++;
@@ -108,7 +108,7 @@ int delete_node_at_index(list_t **head, unsigned int index)
 	{
 		node = *head;
 		*head = (*head)->next;
-		free(node->str);
+		free(node->ptr);
 		free(node);
 		return (1);
 	}
@@ -118,7 +118,7 @@ int delete_node_at_index(list_t **head, unsigned int index)
 		if (a == index)
 		{
 			prev_node->next = node->next;
-			free(node->str);
+			free(node->ptr);
 			free(node);
 			return (1);
 		}
@@ -145,7 +145,7 @@ void free_list(list_t **head_ptr)
 	while (node)
 	{
 		next_node = node->next;
-		free(node->str);
+		free(node->ptr);
 		free(node);
 		node = next_node;
 	}

@@ -9,6 +9,7 @@
 int hsh(info_t *info, char **av)
 {
 	int builtin_ret = 0;
+	int r = 0;
 
 	while (r != -1 && builtin_ret != -2)
 	{
