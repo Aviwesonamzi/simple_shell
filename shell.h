@@ -69,7 +69,7 @@ typedef struct passinfo
 	int histcount;
 } info_t;
 
-#define INFO_INIT_
+#define INFO_INIT
 
 /**
  * struct builtin - contains a builtin string and related function
